@@ -3,6 +3,7 @@ import bs4
 import subprocess
 import json
 import time
+import re
  
 
 
@@ -15,7 +16,17 @@ def get_value(stock):
 	value = subprocess.Popen(['curl', '-s', get_value_url], stdout=subprocess.PIPE).communicate()[0]
 	j = json.loads(value[5:len(value)-2])
 	return float(j['l'])
- 
+def getDiff(ticker):
+	headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36'}
+	url = "https://www.google.com/finance/getprices?i=60&p=16m&f=d,o,h,l,c,v&df=cpct&q={}".format(ticker)
+	res = requests.get(url, headers=headers)
+	result = str(res.text).split('\n')[8:-1]
+	result = [result[0], result[-1]]
+	quoteone = float(re.findall('\d,(\d+\.\d+)', str(result[0]))[0])
+	quotetwo = float(re.findall('\d,(\d+\.\d+)', str(result[1]))[0])
+	return abs(quotetwo - quoteone)
+	#print result
+
 def MakeTrade(stock, quantity):
 	s = requests.Session()
 	data = {'form_id':'account_api_form', 'email': email,
@@ -69,3 +80,7 @@ def calcDiff(stock):
 	value = subprocess.Popen(['curl', '-s', get_value_url], stdout=subprocess.PIPE).communicate()[0]
 	j = json.loads(value[5:len(value)-2])
 	return float(j['l']) - first
+
+
+if __name__ == "__main__":
+	print getDiff("AAPL")
