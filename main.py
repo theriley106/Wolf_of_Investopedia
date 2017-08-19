@@ -83,4 +83,5 @@ def calcDiff(stock):
 
 
 if __name__ == "__main__":
-	print("If you buy {} you will receive {}% returns in 15 minutes".format("AAPL", getDiff("AAPL")))
+	stock = raw_input('Enter Ticker: ')
+	print("If you buy {} you will receive {}% returns in 15 minutes".format(stock, getDiff(stock)))
