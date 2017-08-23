@@ -1,6 +1,8 @@
 import requests
 import bs4
 import subprocess
+import csv
+import random
 import json
 import time
 import re
@@ -87,6 +89,9 @@ def genStocks(csvfile="src/companylist.csv"):
 	return stocklist
 
 if __name__ == "__main__":
-	stock = raw_input('Enter Ticker: ').upper()
-	quantity = raw_input('Quantity: ')
-	print("If you buy {} you will receive {}% returns in 15 minutes".format(stock, getDiff(stock)))
+	stocks = genStocks()
+	for i in range(10):
+		print(random.choice(stocks))
+	#stock = raw_input('Enter Ticker: ').upper()
+	#quantity = raw_input('Quantity: ')
+	#print("If you buy {} you will receive {}% returns in 15 minutes".format(stock, getDiff(stock)))
