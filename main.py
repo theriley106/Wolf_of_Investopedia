@@ -89,5 +89,4 @@ def genStocks(csvfile="src/companylist.csv"):
 if __name__ == "__main__":
 	stock = raw_input('Enter Ticker: ').upper()
 	quantity = raw_input('Quantity: ')
-	MakeTrade(stock, quantity, 'lambertcr@my.gvltec.edu', 'dogzzz106')
 	print("If you buy {} you will receive {}% returns in 15 minutes".format(stock, getDiff(stock)))
