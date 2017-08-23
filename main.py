@@ -27,23 +27,24 @@ def getDiff(ticker):
 	return abs(quotetwo - quoteone)
 	#print result
 
-def MakeTrade(stock, quantity):
+def MakeTrade(ticker, quantity, username, password):
 	s = requests.Session()
-	data = {'form_id':'account_api_form', 'email': email,
+	data = {'form_id':'account_api_form', 'email': username,
 	'password': password, 'op': 'Sign In'}
 	url = 'http://www.investopedia.com/accounts/login.aspx'
 	r = s.post(url, data=data, proxies=proxies)
-	r = s.get('http://www.investopedia.com/simulator/portfolio/?gameid=342', data=data, proxies=proxies)
+	r = s.get('http://www.investopedia.com/simulator/portfolio/', data=data, proxies=proxies)
 	soup = bs4.BeautifulSoup(r.text, 'lxml')
-	AccountValue = soup.select('#ctl00_MainPlaceHolder_currencyFilter_ctrlPortfolioDetails_PortfolioSummary_lblAccountValue')[0].getText()
+	AccountValue = soup.select('p')[0].getText()
 	r = s.post('http://www.investopedia.com/simulator/ajax/quotebox.aspx', data={'symbol': "AAPL"})
 	r = s.get('http://www.investopedia.com/simulator/trade/tradestock.aspx')
 	page = bs4.BeautifulSoup(r.text, 'lxml')
+	print page.title.string
+	if "formToken" in str(page):
+		print('init')
 	for e in page.find_all("input", type="hidden"):
 		if "formToken" in str(e):
 			Form_ID = str(e).partition('type="hidden" value="')[2].partition('"/>')[0]
-	ticker = raw_input('ticker')
-	quantity = raw_input('quantity')
 	data = {'formToken': str(Form_ID), 'symbolTextbox':ticker,
 	'symbolTextbox_mi_1_value':'AAPL',
 	'selectedValue':ticker,
@@ -84,4 +85,5 @@ def calcDiff(stock):
 
 if __name__ == "__main__":
 	stock = raw_input('Enter Ticker: ')
+	quantity = raw_input('Quantity: ')
 	print("If you buy {} you will receive {}% returns in 15 minutes".format(stock, getDiff(stock)))
