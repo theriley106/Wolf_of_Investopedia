@@ -39,9 +39,6 @@ def MakeTrade(ticker, quantity, username, password):
 	r = s.post('http://www.investopedia.com/simulator/ajax/quotebox.aspx', data={'symbol': "AAPL"})
 	r = s.get('http://www.investopedia.com/simulator/trade/tradestock.aspx')
 	page = bs4.BeautifulSoup(r.text, 'lxml')
-	print page.title.string
-	if "formToken" in str(page):
-		print('init')
 	for e in page.find_all("input", type="hidden"):
 		if "formToken" in str(e):
 			Form_ID = str(e).partition('type="hidden" value="')[2].partition('"/>')[0]
@@ -63,7 +60,6 @@ def MakeTrade(ticker, quantity, username, password):
 	for e in page.find_all("input", type="hidden"):
 		if "formToken" in str(e):
 			Form_ID = str(e).partition('type="hidden" value="')[2].partition('"/>')[0]
-			print(Form_ID)
 	urltoken = str(r.url).partition('&urlToken=')[2]
 	data = {'submitOrder':'Submit+Order+%3E%3E', 'formToken': Form_ID}
 	url = 'http://www.investopedia.com/simulator/trade/tradestockpreview.aspx?too=1&type=1&Sym={}&Qty={}&lmt=0&do=2&em=true&urlName=simTrade2Preview&urlToken={}'.format(ticker, quantity, urltoken)
@@ -84,6 +80,7 @@ def calcDiff(stock):
 
 
 if __name__ == "__main__":
-	stock = raw_input('Enter Ticker: ')
+	stock = raw_input('Enter Ticker: ').upper()
 	quantity = raw_input('Quantity: ')
+	MakeTrade(stock, quantity, 'lambertcr@my.gvltec.edu', 'dogzzz106')
 	print("If you buy {} you will receive {}% returns in 15 minutes".format(stock, getDiff(stock)))
