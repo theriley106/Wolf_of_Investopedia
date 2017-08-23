@@ -78,7 +78,7 @@ def calcDiff(stock):
 	j = json.loads(value[5:len(value)-2])
 	return float((float(j['l']) - first) / float(first))
 
-def genStocks(csvfile):
+def genStocks(csvfile="src/companylist.csv"):
 	stocksCSV = open(csvfile, 'r')
 	stocklist = csv.reader(stocksCSV)
 	stocklist = [row for row in stocklist]
