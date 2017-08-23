@@ -78,6 +78,13 @@ def calcDiff(stock):
 	j = json.loads(value[5:len(value)-2])
 	return float((float(j['l']) - first) / float(first))
 
+def genStocks(csvfile):
+	UserAgentCSV = open(csvfile, 'r')
+	UserAgentList = csv.reader(UserAgentCSV)
+	UserAgentList = [row for row in UserAgentList]
+	UserAgentList = [l[0] for l in UserAgentList]
+	random.shuffle(UserAgentList)
+	return UserAgentList
 
 if __name__ == "__main__":
 	stock = raw_input('Enter Ticker: ').upper()
