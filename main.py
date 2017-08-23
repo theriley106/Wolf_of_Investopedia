@@ -79,12 +79,12 @@ def calcDiff(stock):
 	return float((float(j['l']) - first) / float(first))
 
 def genStocks(csvfile):
-	UserAgentCSV = open(csvfile, 'r')
-	UserAgentList = csv.reader(UserAgentCSV)
-	UserAgentList = [row for row in UserAgentList]
-	UserAgentList = [l[0] for l in UserAgentList]
-	random.shuffle(UserAgentList)
-	return UserAgentList
+	stocksCSV = open(csvfile, 'r')
+	stocklist = csv.reader(stocksCSV)
+	stocklist = [row for row in stocklist]
+	stocklist = [l[0] for l in stocklist]
+	random.shuffle(stocklist)
+	return stocklist
 
 if __name__ == "__main__":
 	stock = raw_input('Enter Ticker: ').upper()
