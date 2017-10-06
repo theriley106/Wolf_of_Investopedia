@@ -1,0 +1,35 @@
+[INFO  - 2017-10-06T18:26:10.399Z] GhostDriver - Main - running on port 50275
+[INFO  - 2017-10-06T18:26:11.336Z] Session [d42e7ad0-aac3-11e7-ab22-73850fd1f85b] - page.settings - {"XSSAuditingEnabled":false,"javascriptCanCloseWindows":true,"javascriptCanOpenWindows":true,"javascriptEnabled":true,"loadImages":true,"localToRemoteUrlAccessEnabled":false,"userAgent":"Mozilla/5.0 (Unknown; Linux x86_64) AppleWebKit/538.1 (KHTML, like Gecko) PhantomJS/2.1.1 Safari/538.1","webSecurityEnabled":true}
+[INFO  - 2017-10-06T18:26:11.336Z] Session [d42e7ad0-aac3-11e7-ab22-73850fd1f85b] - page.customHeaders:  - {}
+[INFO  - 2017-10-06T18:26:11.336Z] Session [d42e7ad0-aac3-11e7-ab22-73850fd1f85b] - Session.negotiatedCapabilities - {"browserName":"phantomjs","version":"2.1.1","driverName":"ghostdriver","driverVersion":"1.2.0","platform":"linux-unknown-64bit","javascriptEnabled":true,"takesScreenshot":true,"handlesAlerts":false,"databaseEnabled":false,"locationContextEnabled":false,"applicationCacheEnabled":false,"browserConnectionEnabled":false,"cssSelectorsEnabled":true,"webStorageEnabled":false,"rotatable":false,"acceptSslCerts":false,"nativeEvents":true,"proxy":{"proxyType":"direct"}}
+[INFO  - 2017-10-06T18:26:11.336Z] SessionManagerReqHand - _postNewSessionCommand - New Session Created: d42e7ad0-aac3-11e7-ab22-73850fd1f85b
+[ERROR - 2017-10-06T18:26:33.514Z] Session [d42e7ad0-aac3-11e7-ab22-73850fd1f85b] - page.onError - msg: TypeError: undefined is not an object (evaluating 'r.ready')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2017-10-06T18:26:33.514Z] Session [d42e7ad0-aac3-11e7-ab22-73850fd1f85b] - page.onError - stack:
+  init (http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js:4)
+  c (http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js:4)
+  fireWith (http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js:4)
+  ready (http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js:4)
+  q (http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js:4)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2017-10-06T18:26:35.308Z] Session [d42e7ad0-aac3-11e7-ab22-73850fd1f85b] - page.onError - msg: SyntaxError: JSON Parse error: Unable to parse JSON string
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2017-10-06T18:26:35.308Z] Session [d42e7ad0-aac3-11e7-ab22-73850fd1f85b] - page.onError - stack:
+  parse (https://cdn.doubleverify.com/dv-measurements49.js:2)
+  (anonymous function) (https://cdn.doubleverify.com/dv-measurements49.js:2)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2017-10-06T18:26:35.312Z] Session [d42e7ad0-aac3-11e7-ab22-73850fd1f85b] - page.onError - msg: SyntaxError: JSON Parse error: Unable to parse JSON string
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2017-10-06T18:26:35.312Z] Session [d42e7ad0-aac3-11e7-ab22-73850fd1f85b] - page.onError - stack:
+  parse (https://cdn.doubleverify.com/dv-measurements49.js:2)
+  (anonymous function) (https://cdn.doubleverify.com/dv-measurements49.js:2)
+
+  phantomjs://platform/console++.js:263 in error
+[INFO  - 2017-10-06T18:31:10.398Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-10-06T18:36:10.398Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-10-06T18:37:00.142Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW

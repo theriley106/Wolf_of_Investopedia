@@ -1,0 +1,106 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>SB Admin - Start Bootstrap Template</title>
+  <!-- Bootstrap core CSS-->
+  <link href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+  <!-- Custom fonts for this template-->
+  <link href="{{ url_for('static', filename='vendor/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
+  <!-- Page level plugin CSS-->
+  <link href="{{ url_for('static', filename='vendor/datatables/dataTables.bootstrap4.css') }}" rel="stylesheet">
+  <!-- Custom styles for this template-->
+  <link href="{{ url_for('static', filename='css/sb-admin.css') }}" rel="stylesheet">
+  <style>
+  body.fixed-na {
+    padding-top: 1%;
+    padding-left: 4%;
+    padding-right: 4%;
+}
+</style>
+</head>
+
+<body class="fixed-na sticky-footer bg-dark" id="page-top">
+
+  <!-- Navigation-->
+  
+     
+    <div class="container-fluid">
+    <button type="button" class="btn btn-warning btn-block">Generate Profitable Trade</button>
+    <br>
+
+     <center>
+      <!-- Breadcrumbs-->
+     
+      <!-- Icon Cards-->
+      <div class="row">
+        <div class="col-xl-3 col-sm-4 mb-3">
+          <div class="card text-white bg-danger o-hidden h-100">
+            <a class="card-footer text-white clearfix small z-1" href="#">
+            <div class="card-body">
+              <div class="card-body-icon">
+                <i class="fa fa-fw fa-arrow-down"></i>
+              </div>
+              <center><h4><b>Short</b></h4></center>
+            </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="col-xl-6 col-sm-4 mb-3 input-group" >
+          <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" style="text-align: center; font-size: 68px;" placeholder="Input Stock Ticker">
+        </div>
+
+
+         <div class="col-xl-3 col-sm-4 mb-3">
+          <div class="card text-white bg-success o-hidden h-100">
+            <a class="card-footer text-white clearfix small z-1" href="#">
+            <div class="card-body">
+              <div class="card-body-icon">
+                <i class="fa fa-fw fa-arrow-up"></i>
+              </div>
+              <center><h4><b>Long</b></h4></center>
+            </div>
+            </a>
+          </div>
+        </div>
+
+      </div>
+      <!-- Area Chart Example-->
+      <div class="card mb-3">
+        <div class="card-header">
+          <i class="fa fa-area-chart"></i> Area Chart Example</div>
+        <div class="card-body">
+          <canvas id="myAreaChart" width="100%" height="20"></canvas>
+        </div>
+        <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+      </div>
+      <div class="row">
+        <div class="col-lg-8">
+    <!-- /.content-wrapper-->
+    
+    <!-- Bootstrap core JavaScript-->
+    <script src="{{ url_for('static', filename='vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/popper/popper.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="{{ url_for('static', filename='vendor/jquery-easing/jquery.easing.min.js') }}"></script>
+    <!-- Page level plugin JavaScript-->
+    <script src="{{ url_for('static', filename='vendor/chart.js/Chart.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/datatables/jquery.dataTables.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/datatables/dataTables.bootstrap4.js') }}"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="{{ url_for('static', filename='js/sb-admin.min.js') }}"></script>
+    <!-- Custom scripts for this page-->
+    <script src="{{ url_for('static', filename='js/sb-admin-datatables.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/sb-admin-charts.min.js') }}"></script>
+  </div>
+</body>
+
+</html>

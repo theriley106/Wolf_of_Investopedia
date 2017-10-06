@@ -3,15 +3,32 @@ import bs4
 import subprocess
 import csv
 import random
+import os
 import json
 import time
 import re
- 
+from selenium import webdriver
 
 
 proxies = {}
 email = ''
 password = ''
+
+'''
+https://superquotes.xignite.com/xSuperQuotes.json/GetQuotes?IdentifierType=Symbol&Identifiers=TSLA&_token=15B2186D55CB1AEFD12E7C2C2DE9CBB9110DFB516C5307188C5E44131653A7F1F21A023038E05980073DEADDB4E37DF5FA4D702B&_token_userid=46384
+'''
+
+class getQuotes(object):
+	def __init__(self):
+		self.headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36'}
+		self.driver = webdriver.PhantomJS()
+		self.driver.get('http://www.investopedia.com/markets/stocks/tsla/')
+		self.source = bs4.BeautifulSoup(self.driver.page_source) #page_source fetches page after rendering is complete
+		self.driver.save_screenshot('screen.png') # save a screenshot to disk
+
+	def printVal(self):
+		print self.driver.get_cookies()
+
 
 def get_value(stock):
 	get_value_url = 'http://finance.google.com/finance/info?client=ig&q=' + stock
@@ -22,6 +39,7 @@ def getDiff(ticker):
 	headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36'}
 	url = "https://www.google.com/finance/getprices?i=60&p=16m&f=d,o,h,l,c,v&df=cpct&q={}".format(ticker)
 	res = requests.get(url, headers=headers)
+	print res.text
 	result = str(res.text).split('\n')[8:-1]
 	result = [result[0], result[-1]]
 	quoteone = float(re.findall('\d,(\d+\.\d+)', str(result[0]))[0])
@@ -89,9 +107,5 @@ def genStocks(csvfile="src/companylist.csv"):
 	return stocklist
 
 if __name__ == "__main__":
-	stocks = genStocks()
-	for i in range(10):
-		print(random.choice(stocks))
-	#stock = raw_input('Enter Ticker: ').upper()
-	#quantity = raw_input('Quantity: ')
-	#print("If you buy {} you will receive {}% returns in 15 minutes".format(stock, getDiff(stock)))
+	a = getQuotes()
+	a.printVal()
