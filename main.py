@@ -14,7 +14,11 @@ proxies = {}
 email = ''
 password = ''
 
-
+def grabStocks(csvfile):
+	csv_row = []
+	for line in open(csvfile):
+		csv_row.append(line.split()[0])
+	return csv_row
 class getQuotes(object):
 	def __init__(self):
 		self.headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36'}
@@ -27,8 +31,9 @@ class getQuotes(object):
 
 	def getQuote(self, ticker):
 		url = "https://superquotes.xignite.com/xSuperQuotes.json/GetQuotes?IdentifierType=Symbol&Identifiers={}&_token={}&_token_userid={}".format(ticker, self.Token, self.UserID)
-		self.driver.get(url)
-		print self.driver.page_source
+		#self.driver.get(url)
+		#print self.driver.page_source
+		return (requests.get(url).text)
 		#self.driver.get_cookies()
 
 
@@ -110,6 +115,18 @@ def genStocks(csvfile="src/companylist.csv"):
 
 if __name__ == "__main__":
 	a = getQuotes()
+	e = []
+	for t in grabStocks("NYSE.csv"):
+		if "RequestError" in str(a.getQuote(t)):
+			print "Error with {}".format(t)
+		else:
+			print "Good"
+			e.append(t)
+	e = list(set(e))
+	with open('returns.csv', 'wb') as f:
+		writer = csv.writer(f)
+		for val in e:
+			writer.writerow([val])
 	for i in range(10):
 		ticker = raw_input("Ticker: ")
 		ticker = str(ticker).upper()
