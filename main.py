@@ -14,25 +14,22 @@ proxies = {}
 email = ''
 password = ''
 
-'''
-https://superquotes.xignite.com/xSuperQuotes.json/GetQuotes?IdentifierType=Symbol&Identifiers=TSLA&_token=15B2186D55CB1AEFD12E7C2C2DE9CBB9110DFB516C5307188C5E44131653A7F1F21A023038E05980073DEADDB4E37DF5FA4D702B&_token_userid=46384
-'''
-
-N4IgNgDiBcIBYBcEQKQGYCCKBMAxHuA7sQHQCWAdgG4CmAzggPYQ0AmZAhiQMaMC2BPhwBOAaxoI6BBo26ipeSWA4EQAGhDCYIEAF8gA
-
-https://superquotes.xignite.com/xSuperQuotes.json/GetQuotes?IdentifierType=Symbol&Identifiers=TSLA&_token=N4IgNgDiBcIBYBcEQKQGYCCKBMAxHuA7sQHQCWAdgG4CmAzggPYQ0AmZAhiQMaMC2BPhwBOAaxoI6BBo26ipeSWA4EQAGhDCYIEAF8gA&_token_userid=46384
-
 
 class getQuotes(object):
 	def __init__(self):
 		self.headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36'}
 		self.driver = webdriver.PhantomJS()
 		self.driver.get('http://www.investopedia.com/markets/stocks/tsla/')
-		self.source = bs4.BeautifulSoup(self.driver.page_source) #page_source fetches page after rendering is complete
 		self.driver.save_screenshot('screen.png') # save a screenshot to disk
+		networkActivity = str(re.findall('https:\/\/superquotes\.xignite\.com\/((.*?))"', str(self.driver.get_log('har')))[0])
+		self.Token = str(networkActivity.partition("&_token=")[2]).partition('&')[0]
+		self.UserID = ''.join(re.findall('(\d+)\D', str(networkActivity.partition("&_token_userid=")[2].partition(' ')[0])))
 
-	def printVal(self):
-		print self.driver.get_cookies()
+	def getQuote(self, ticker):
+		url = "https://superquotes.xignite.com/xSuperQuotes.json/GetQuotes?IdentifierType=Symbol&Identifiers={}&_token={}&_token_userid={}".format(ticker, self.Token, self.UserID)
+		self.driver.get(url)
+		print self.driver.page_source
+		#self.driver.get_cookies()
 
 
 def get_value(stock):
@@ -113,4 +110,7 @@ def genStocks(csvfile="src/companylist.csv"):
 
 if __name__ == "__main__":
 	a = getQuotes()
-	a.printVal()
+	for i in range(10):
+		ticker = raw_input("Ticker: ")
+		ticker = str(ticker).upper()
+		a.getQuote(ticker)
