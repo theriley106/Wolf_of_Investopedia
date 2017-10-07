@@ -18,6 +18,11 @@ password = ''
 https://superquotes.xignite.com/xSuperQuotes.json/GetQuotes?IdentifierType=Symbol&Identifiers=TSLA&_token=15B2186D55CB1AEFD12E7C2C2DE9CBB9110DFB516C5307188C5E44131653A7F1F21A023038E05980073DEADDB4E37DF5FA4D702B&_token_userid=46384
 '''
 
+N4IgNgDiBcIBYBcEQKQGYCCKBMAxHuA7sQHQCWAdgG4CmAzggPYQ0AmZAhiQMaMC2BPhwBOAaxoI6BBo26ipeSWA4EQAGhDCYIEAF8gA
+
+https://superquotes.xignite.com/xSuperQuotes.json/GetQuotes?IdentifierType=Symbol&Identifiers=TSLA&_token=N4IgNgDiBcIBYBcEQKQGYCCKBMAxHuA7sQHQCWAdgG4CmAzggPYQ0AmZAhiQMaMC2BPhwBOAaxoI6BBo26ipeSWA4EQAGhDCYIEAF8gA&_token_userid=46384
+
+
 class getQuotes(object):
 	def __init__(self):
 		self.headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36'}

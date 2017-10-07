@@ -24,6 +24,7 @@
     padding-right: 4%;
 }
 </style>
+
 </head>
 
 <body class="fixed-na sticky-footer bg-dark" id="page-top">
@@ -39,39 +40,41 @@
       <!-- Breadcrumbs-->
      
       <!-- Icon Cards-->
+      <form id="myform" role = "form" action = "{{url_for('genTrade') }}" method="post">
       <div class="row">
+
         <div class="col-xl-3 col-sm-4 mb-3">
           <div class="card text-white bg-danger o-hidden h-100">
-            <a class="card-footer text-white clearfix small z-1" href="#">
+          
+            <button class="card-footer text-white clearfix small z-1" type="Submit" text="Text" name="Short" href = "{{url_for('genTrade') }}">
             <div class="card-body">
               <div class="card-body-icon">
                 <i class="fa fa-fw fa-arrow-down"></i>
               </div>
               <center><h4><b>Short</b></h4></center>
             </div>
-            </a>
           </div>
         </div>
 
         <div class="col-xl-6 col-sm-4 mb-3 input-group" >
-          <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" style="text-align: center; font-size: 68px;" placeholder="Input Stock Ticker">
+          <input type="text" name="Ticker" class="form-control" id="Input_Ticker" aria-label="Amount (to the nearest dollar)" style="text-align: center; font-size: 68px;" placeholder="Input Stock Ticker">
         </div>
 
 
          <div class="col-xl-3 col-sm-4 mb-3">
           <div class="card text-white bg-success o-hidden h-100">
-            <a class="card-footer text-white clearfix small z-1" href="#">
+          
+            <button class="card-footer text-white clearfix small z-1" type="Submit" name="Long" href = "{{url_for('genTrade') }}">
             <div class="card-body">
               <div class="card-body-icon">
                 <i class="fa fa-fw fa-arrow-up"></i>
               </div>
               <center><h4><b>Long</b></h4></center>
             </div>
-            </a>
           </div>
         </div>
-
       </div>
+      </form>
       <!-- Area Chart Example-->
       <div class="card mb-3">
         <div class="card-header">
