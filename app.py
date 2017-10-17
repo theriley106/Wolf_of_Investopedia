@@ -12,6 +12,12 @@ app = Flask(__name__, static_url_path='/static')
 def song():
 	return render_template('index.html')
 
+@app.route('/something.svg')
+def graph_something():
+    bar_chart = pygal.Bar()
+    bar_chart.add('Fibonacci', [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55])
+    return bar_chart.render_response()
+
 @app.route('/calc/', methods=['POST'])
 def genTrade(stock=False, position=False):
 	for values in list(request.form.items()):

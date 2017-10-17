@@ -17,7 +17,43 @@
   <link href="{{ url_for('static', filename='vendor/datatables/dataTables.bootstrap4.css') }}" rel="stylesheet">
   <!-- Custom styles for this template-->
   <link href="{{ url_for('static', filename='css/sb-admin.css') }}" rel="stylesheet">
+
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.bundle.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.bundle.js"></script>
+    <!-- <script src="Chart.bundle.js"></script> -->
+<script>
+  function resizeIframe(obj) {
+    obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
+  }
+</script>
+
+
   <style>
+     #Blocker{
+
+    position:absolute;
+    z-index:10;
+    right:10px;
+    bottom:5px;
+    height:15px;
+    width:100px;
+    background-color:orange;
+}
+#frame{
+
+    height:100%;
+    width:100%;
+     position:absolute;
+}
+#Wrapper{
+    height:100%;
+    width:auto;
+    border:solid red 2px;
+}
   body.fixed-na {
     padding-top: 1%;
     padding-left: 4%;
@@ -57,7 +93,7 @@
         </div>
 
         <div class="col-xl-6 col-sm-4 mb-3 input-group" >
-          <input type="text" name="Ticker" class="form-control" id="Input_Ticker" aria-label="Amount (to the nearest dollar)" style="text-align: center; font-size: 68px;" placeholder="Input Stock Ticker">
+          <input type="text" name="Ticker" class="form-control" id="Input_Ticker" aria-label="Amount (to the nearest dollar)" style="text-align: center; font-size: 68px;" onfocus="this.placeholder=''" onblur="this.placeholder='Input Stock Ticker'" placeholder="Input Stock Ticker">
         </div>
 
 
@@ -77,15 +113,15 @@
       </form>
       <!-- Area Chart Example-->
       <div class="card mb-3">
-        <div class="card-header">
-          <i class="fa fa-area-chart"></i> Area Chart Example</div>
-        <div class="card-body">
-          <canvas id="myAreaChart" width="100%" height="20"></canvas>
+          <div>
+
+  <iframe id="frameID" src="https://s.tradingview.com/widgetembed/?symbol=aapl&interval=D&toolbarbg=f4f7f9&studies=%5B%5D&theme=Dark&timezone=exchange" width="100%" height="650px" scrolling="no"></iframe>
         </div>
         <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
       </div>
       <div class="row">
         <div class="col-lg-8">
+
     <!-- /.content-wrapper-->
     
     <!-- Bootstrap core JavaScript-->
@@ -107,3 +143,5 @@
 </body>
 
 </html>
+
+
