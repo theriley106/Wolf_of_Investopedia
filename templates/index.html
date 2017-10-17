@@ -93,7 +93,7 @@
         </div>
 
         <div class="col-xl-6 col-sm-4 mb-3 input-group" >
-          <input type="text" name="Ticker" class="form-control" id="Input_Ticker" aria-label="Amount (to the nearest dollar)" style="text-align: center; font-size: 68px;" onfocus="this.placeholder=''" onblur="this.placeholder='Input Stock Ticker'" placeholder="Input Stock Ticker">
+          <input type="text" name="Ticker" class="form-control" id="Input_Ticker" aria-label="Amount (to the nearest dollar)" style="text-align: center; font-size: 68px;" onfocus="this.placeholder=''" onblur="this.placeholder='Input Stock Ticker'" placeholder="{{ stock }} Quote">
         </div>
 
 
@@ -115,9 +115,9 @@
       <div class="card mb-3">
           <div>
 
-  <iframe id="frameID" src="https://s.tradingview.com/widgetembed/?symbol=aapl&interval=D&toolbarbg=f4f7f9&studies=%5B%5D&theme=Dark&timezone=exchange" width="100%" height="650px" scrolling="no"></iframe>
+  <iframe id="frameID" src="https://s.tradingview.com/widgetembed/?symbol={{ stockTicker }}&interval=D&toolbarbg=f4f7f9&studies=%5B%5D&theme=Dark&timezone=exchange" width="100%" height="650px" scrolling="no"></iframe>
         </div>
-        <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+        <div class="card-footer small text-muted">Updated {{ currentTime }}</div>
       </div>
       <div class="row">
         <div class="col-lg-8">
