@@ -6,6 +6,5 @@ Investopedia Bot that is able to generate consistent positive returns by exploit
 
 ### TO DO
 
-Scan through the stocks in src/companylist.csv and find out which ones are not actively traded on Investopedia
 
 Add Options trading
