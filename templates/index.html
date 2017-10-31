@@ -112,10 +112,20 @@
       </div>
       </form>
       <!-- Area Chart Example-->
+      <div>
+      <h1 style="color: white">Our algorithms detect this stock is <b style="color: red">UNDERPRICED</b> on Investopedia</h1>
+
+      <h1 style="color: white">Buying this stock would yield a <b style="color: red">$312.31 LOSS</b> per 1k shares</h1> 
+
+      <h1 style="color: white">Shorting this stock would yield a <b style="color: green">$312.31 GAIN</b> per 1k shares</h1> 
+
+      </div>
+
+
       <div class="card mb-3">
           <div>
 
-  <iframe id="frameID" src="https://s.tradingview.com/widgetembed/?symbol={{ stockTicker }}&interval=D&toolbarbg=f4f7f9&studies=%5B%5D&theme=Dark&timezone=exchange" width="100%" height="650px" scrolling="no"></iframe>
+  <iframe id="frameID" src="https://s.tradingview.com/widgetembed/?symbol={{ stockTicker }}&interval=D&toolbarbg=f4f7f9&studies=%5B%5D&theme=Dark&timezone=exchange" width="100%" height="450px" scrolling="no"></iframe>
         </div>
         <div class="card-footer small text-muted">Updated {{ currentTime }}</div>
       </div>
