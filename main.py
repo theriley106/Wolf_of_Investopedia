@@ -44,6 +44,14 @@ def extractChange(stock, minute=15):
 	a = sorted(a["Time Series (1min)"].items())[::-1]
 	return [a[0], a[minute-1]]
 
+def getDifference(stock, minute=15):
+	a = extractChange(stock, minute)
+	first = str(a[0]).partition('close')[2]
+	value1 = float(re.findall('\d*\.\d*', first)[0])
+	second = str(a[1]).partition('close')[2]
+	value2 = float(re.findall('\d*\.\d*', second)[0])
+	return float('{:,.2f}'.format(value1 - value2))
+
 def get_value(stock):
 	get_value_url = 'http://finance.google.com/finance/info?client=ig&q=' + stock
 	value = subprocess.Popen(['curl', '-s', get_value_url], stdout=subprocess.PIPE).communicate()[0]
