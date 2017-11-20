@@ -39,7 +39,6 @@ def genTrade(stock=False, position=False):
 			a.append(e)
 	a.append(e)
 	results = a
-	print(position)
 	stock = list(results)[0][1]
 	for e in results:
 		print e
