@@ -115,9 +115,14 @@
       <div>
       <h1 style="color: white">Our algorithms detect this stock is <b style="color: red">UNDERPRICED</b> on Investopedia</h1>
 
-      <h1 style="color: white">Buying this stock would yield a <b style="color: red">$312.31 LOSS</b> per 1k shares</h1> 
+      {% if position == "short" %}
+          <h1 style="color: white">Shorting this stock would yield a <b style="color: green">$312.31 GAIN</b> per 1k shares</h1>
+      {% else %}
+          <h1 style="color: white">Buying this stock would yield a <b style="color: red">$312.31 LOSS</b> per 1k shares</h1> 
+      {% endif %}
 
-      <!-- <h1 style="color: white">Shorting this stock would yield a <b style="color: green">$312.31 GAIN</b> per 1k shares</h1>-->
+      
+
       <h5 style="color: white"><b>Assuming a 15 Minute Holding Period</b></h5>
 
       </div>

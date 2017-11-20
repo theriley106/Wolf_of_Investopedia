@@ -15,31 +15,35 @@ for e in listStock:
 
 app = Flask(__name__, static_url_path='/static')
 
-@app.route('/<stock>', methods=['POST', "GET"])
-def mainStock(stock):
+@app.route('/<stock>/<position>', methods=['POST', "GET"])
+def mainStock(stock, position):
 	stockTicker = stock.lower()
-	return render_template('index.html', stock=stock, stockTicker=stockTicker, currentTime=datetime.datetime.now().strftime("%Y-%m-%d %H:%M"))
+	return render_template('index.html', stock=stock, position=position, stockTicker=stockTicker, currentTime=datetime.datetime.now().strftime("%Y-%m-%d %H:%M"))
 	
 @app.route('/', methods=['POST', "GET"])
 def genStock():
 	stock = random.choice(LISTOFSTOCKS)
-	
-	return redirect(url_for('mainStock', stock=stock))
+	return redirect(url_for('mainStock', stock=stock, position='long'))
 
 @app.route('/calc/', methods=['POST'])
 def genTrade(stock=False, position=False):
 	a = []
 	results = list(request.form.items())
+	if 'Short' in str(results):
+		position = 'short'
+	else:
+		position = 'long'
+	print results
 	for e in results:
 		if "Ticker" in str(e):
 			a.append(e)
 	a.append(e)
 	results = a
-	position = list(results)[1][0]
+	print(position)
 	stock = list(results)[0][1]
 	for e in results:
 		print e
-	return redirect(url_for('mainStock', stock=stock))
+	return redirect(url_for('mainStock', stock=stock, position=position))
 	#return "It looks like you want to {} {}".format(position, stock)
 
 
