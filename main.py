@@ -39,6 +39,10 @@ class getQuotes(object):
 def get_real_value(stock):
 	return requests.get('https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol={}&interval=1min&apikey=3ZC52BSRXYLK76YY'.format(stock)).json()
 
+def extractChange(stock, minute=15)
+	a = get_real_value(stock)
+	a = sorted(a["Time Series (1min)"].items())[::-1]
+	return [a[0], a[minute-1]]
 
 def get_value(stock):
 	get_value_url = 'http://finance.google.com/finance/info?client=ig&q=' + stock
