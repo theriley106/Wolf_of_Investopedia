@@ -2,6 +2,7 @@ from flask import Flask, request, render_template, request, url_for, redirect, M
 from datetime import datetime
 import csv
 import random
+import main
 import os
 import datetime
 LISTOFSTOCKS = []
@@ -18,7 +19,13 @@ app = Flask(__name__, static_url_path='/static')
 @app.route('/<stock>/<position>', methods=['POST', "GET"])
 def mainStock(stock, position):
 	stockTicker = stock.lower()
-	return render_template('index.html', stock=stock, position=position, stockTicker=stockTicker, profit="$326.91", priceType="Underpriced", currentTime=datetime.datetime.now().strftime("%Y-%m-%d %H:%M"))
+	price = float(main.getDifference(stock)) * 1000
+	if price < 0:
+		priceType = "Underpriced"
+	else:
+		priceType = "Overpriced"
+	price = '${:,.2f}'.format(price)
+	return render_template('index.html', stock=stock, position=position, stockTicker=stockTicker, profit=price, priceType=priceType, currentTime=datetime.datetime.now().strftime("%Y-%m-%d %H:%M"))
 	
 @app.route('/', methods=['POST', "GET"])
 def genStock():
