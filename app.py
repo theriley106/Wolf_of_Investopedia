@@ -18,7 +18,7 @@ app = Flask(__name__, static_url_path='/static')
 @app.route('/<stock>/<position>', methods=['POST', "GET"])
 def mainStock(stock, position):
 	stockTicker = stock.lower()
-	return render_template('index.html', stock=stock, position=position, stockTicker=stockTicker, currentTime=datetime.datetime.now().strftime("%Y-%m-%d %H:%M"))
+	return render_template('index.html', stock=stock, position=position, stockTicker=stockTicker, profit="$326.91", profitType="Underpriced", currentTime=datetime.datetime.now().strftime("%Y-%m-%d %H:%M"))
 	
 @app.route('/', methods=['POST', "GET"])
 def genStock():
