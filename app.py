@@ -25,7 +25,14 @@ def mainStock(stock, position):
 	else:
 		priceType = "Overpriced"
 	price = '${:,.2f}'.format(price)
-	return render_template('index.html', stock=stock, position=position, stockTicker=stockTicker, profit=price, priceType=priceType, currentTime=datetime.datetime.now().strftime("%Y-%m-%d %H:%M"))
+	time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
+	currentHour = datetime.datetime.now().strftime("%H")
+	currentMinute = datetime.datetime.now().strftime("%M")
+	if currentHour > 7 and currentMinute > 29 and currentHour < 16 and datetime.datetime.today().weekday() < 5:
+		openHours = True
+	else:
+		openHours == False
+	return render_template('index.html', stock=stock, position=position, stockTicker=stockTicker, profit=price, priceType=priceType, currentTime=time, openHours=openHours)
 	
 @app.route('/', methods=['POST', "GET"])
 def genStock():
@@ -60,4 +67,4 @@ def showTrades(ticker):
 
 
 if __name__ == '__main__':
-	app.run(host='0.0.0.0', port=80, debug=True)
+	app.run(host='0.0.0.0', port=8000, debug=True)
