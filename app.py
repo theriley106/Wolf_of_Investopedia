@@ -24,6 +24,15 @@ def mainStock(stock, position):
 		priceType = "Underpriced"
 	else:
 		priceType = "Overpriced"
+
+	if position == "short" and priceType == "Underpricde":
+		profitable = "False"
+	if position == "short" and priceType == "Overpriced":
+		profitable = "True"
+	if position == "long" and priceType == "Underpriced":
+		profitable = "True"
+	if position == "long" and priceType == "Overpriced":
+		profitable = "False"
 	price = '${:,.2f}'.format(price)
 	time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
 	currentHour = datetime.datetime.now().strftime("%H")
@@ -32,7 +41,7 @@ def mainStock(stock, position):
 		openHours = "open"
 	else:
 		openHours = "closed"
-	return render_template('index.html', stock=stock, position=position, stockTicker=stockTicker, profit=price, priceType=priceType, currentTime=time, openHours=openHours)
+	return render_template('index.html', stock=stock, position=position, stockTicker=stockTicker, profit=price, profitable=profitable, priceType=priceType, currentTime=time, openHours=openHours)
 	
 @app.route('/', methods=['POST', "GET"])
 def genStock():

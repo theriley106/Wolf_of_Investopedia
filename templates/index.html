@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -118,9 +117,17 @@
       <h1 style="color: white">Our algorithms detect this stock is <b style="color: red">{{ priceType }}</b> on Investopedia</h1>
 
       {% if position == "short" %}
+        {% if profitable == "True" %}
           <h1 style="color: white">Shorting this stock would yield a <b style="color: green">{{ profit }} GAIN</b> per 1k shares</h1>
+        {% else %}
+          <h1 style="color: white">Shorting this stock would yield a <b style="color: red">{{ profit }} LOSS</b> per 1k shares</h1>
+        {% endif %}
       {% else %}
+          {% if profitable == "False" %}
           <h1 style="color: white">Buying this stock would yield a <b style="color: red">{{ profit }} LOSS</b> per 1k shares</h1> 
+          {% else %}
+          <h1 style="color: white">Buying this stock would yield a <b style="color: green">{{ profit }} GAIN</b> per 1k shares</h1>
+          {% endif %}
       {% endif %}
 
       
