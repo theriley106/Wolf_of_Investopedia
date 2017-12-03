@@ -29,9 +29,9 @@ def mainStock(stock, position):
 	currentHour = datetime.datetime.now().strftime("%H")
 	currentMinute = datetime.datetime.now().strftime("%M")
 	if currentHour > 7 and currentMinute > 29 and currentHour < 16 and datetime.datetime.today().weekday() < 5:
-		openHours = True
+		openHours = "open"
 	else:
-		openHours == False
+		openHours = "closed"
 	return render_template('index.html', stock=stock, position=position, stockTicker=stockTicker, profit=price, priceType=priceType, currentTime=time, openHours=openHours)
 	
 @app.route('/', methods=['POST', "GET"])

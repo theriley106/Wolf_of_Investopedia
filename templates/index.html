@@ -66,7 +66,9 @@
 <body class="fixed-na sticky-footer bg-dark" id="page-top">
 
   <!-- Navigation-->
-  
+    {% if openHours == "closed" %}
+      {% include 'timeWarning.html' %}
+    {% endif %}
      
     <div class="container-fluid">
     <!-- <button type="button" class="btn btn-warning btn-block">Generate Profitable Trade</button>  <br>-->
