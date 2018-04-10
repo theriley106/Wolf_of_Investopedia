@@ -15,10 +15,9 @@ email = ''
 password = ''
 
 def grabStocks(csvfile):
-	csv_row = []
-	for line in open(csvfile):
-		csv_row.append(line.split()[0])
-	return csv_row
+    return [line.split()[0] for line in open(csvfile)]
+
+
 class getQuotes(object):
 	def __init__(self):
 		self.headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36'}
@@ -61,7 +60,7 @@ def getDiff(ticker):
 	headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36'}
 	url = "https://www.google.com/finance/getprices?i=60&p=16m&f=d,o,h,l,c,v&df=cpct&q={}".format(ticker)
 	res = requests.get(url, headers=headers)
-	print res.text
+	print(res.text)
 	result = str(res.text).split('\n')[8:-1]
 	result = [result[0], result[-1]]
 	quoteone = float(re.findall('\d,(\d+\.\d+)', str(result[0]))[0])
@@ -133,9 +132,9 @@ if __name__ == "__main__":
 	e = []
 	for t in grabStocks("NYSE.csv"):
 		if "RequestError" in str(a.getQuote(t)):
-			print "Error with {}".format(t)
+			print("Error with {}".format(t))
 		else:
-			print "Good"
+			print("Good")
 			e.append(t)
 	e = list(set(e))
 	with open('returns.csv', 'wb') as f:
@@ -143,6 +142,6 @@ if __name__ == "__main__":
 		for val in e:
 			writer.writerow([val])
 	for i in range(10):
-		ticker = raw_input("Ticker: ")
+		ticker = input("Ticker: ")
 		ticker = str(ticker).upper()
 		a.getQuote(ticker)
