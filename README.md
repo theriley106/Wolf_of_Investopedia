@@ -8,3 +8,7 @@ Investopedia Bot that is able to generate consistent positive returns by exploit
 
 
 Add Options trading
+
+### Run it
+
+[![Run on Repl.it](https://repl.it/badge/github/theriley106/Wolf_of_Investopedia)](https://repl.it/github/theriley106/Wolf_of_Investopedia)
