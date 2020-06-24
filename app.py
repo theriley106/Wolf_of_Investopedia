@@ -25,7 +25,7 @@ def mainStock(stock, position):
 	else:
 		priceType = "Overpriced"
 
-	if position == "short" and priceType == "Underpricde":
+	if position == "short" and priceType == "Underpriced":
 		profitable = "False"
 	if position == "short" and priceType == "Overpriced":
 		profitable = "True"
